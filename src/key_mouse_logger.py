@@ -28,17 +28,6 @@ if os.path.exists(DATA_FILE):
 lock = threading.Lock()
 
 
-with open("keyboard_layout.json", "r") as f:
-    layout_data = json.load(f)
-
-keyboard_layout = layout_data["layout"]
-key_widths = layout_data.get("key_widths", {})
-
-# Example: get width with fallback
-def get_key_width(key):
-    return key_widths.get(key, 1)
-
-
 # -------------------------------------
 # CALLBACKS
 # -------------------------------------
