@@ -4,6 +4,13 @@ import seaborn as sns
 from matplotlib.patches import Rectangle
 
 def draw_keyboard_heatmap(layout_file: str, key_counts: dict, output_file: str = "keyboard_heatmap.png"):
+    """
+    Generates a heatmap of a keyboard based on key press frequency.
+    Args:
+        layout_file (str): Path to the JSON file containing keyboard layout, key widths, and zones.
+        key_counts (dict): A dictionary mapping key labels (str) to the number of times each key was pressed (int).
+        output_file (str, optional): File path to save the heatmap image. Defaults to "keyboard_heatmap.png".
+    """
     # Load layout
     with open(layout_file, 'r') as f:
         data = json.load(f)
