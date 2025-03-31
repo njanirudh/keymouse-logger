@@ -27,6 +27,21 @@ if os.path.exists(DATA_FILE):
 
 lock = threading.Lock()
 
+
+with open("keyboard_layout.json", "r") as f:
+    layout_data = json.load(f)
+
+keyboard_layout = layout_data["layout"]
+key_widths = layout_data.get("key_widths", {})
+
+# Example: get width with fallback
+def get_key_width(key):
+    return key_widths.get(key, 1)
+
+
+# -------------------------------------
+# CALLBACKS
+# -------------------------------------
 # Keyboard callback
 def on_key_press(key):
     try:
@@ -48,15 +63,28 @@ def on_click(x, y, button, pressed):
                 with open(DATA_FILE, "w") as f:
                     json.dump(input_counts, f)
 
-def start_listeners():
-    # Start both listeners
-    k_listener = keyboard.Listener(on_press=on_key_press)
-    m_listener = mouse.Listener(on_click=on_click)
-    k_listener.daemon = True
-    m_listener.daemon = True
-    k_listener.start()
-    m_listener.start()
-
+# -------------------------------------
+# STATISTICS & HEATMAPS
+# -------------------------------------
+def print_statistics():
+    """
+    Print the statistics for both the mouse and keyboard
+    """
+    key_total = sum(input_counts["keys"].values())
+    mouse_total = sum(input_counts["mouse"].values())
+    print("\n--- Input Usage Statistics ---")
+    print(f"Total Key Presses: {key_total}")
+    print(f"Total Mouse Clicks: {mouse_total}")
+    print("Mouse Click Breakdown:")
+    for btn, count in input_counts["mouse"].items():
+        print(f"  {btn.capitalize()} Clicks: {count}")
+    print("Top 10 Pressed Keys:")
+    top_keys = sorted(input_counts["keys"].items(), key=lambda x: x[1], reverse=True)[:10]
+    for k, v in top_keys:
+        print(f"  {k}: {v}")
+    print(f"Unique Keys Used: {len(input_counts['keys'])}")
+    
+    
 def generate_keyboard_heatmap():
     layout = [
         ['esc','f1','f2','f3','f4','f5','f6','f7','f8','f9','f10','f11','f12','del'],
@@ -77,21 +105,7 @@ def generate_keyboard_heatmap():
     plt.tight_layout()
     plt.savefig("keyboard_heatmap.png")
     print("Heatmap saved as 'keyboard_heatmap.png'")
-
-def print_statistics():
-    key_total = sum(input_counts["keys"].values())
-    mouse_total = sum(input_counts["mouse"].values())
-    print("\n--- Input Usage Statistics ---")
-    print(f"Total Key Presses: {key_total}")
-    print(f"Total Mouse Clicks: {mouse_total}")
-    print("Mouse Click Breakdown:")
-    for btn, count in input_counts["mouse"].items():
-        print(f"  {btn.capitalize()} Clicks: {count}")
-    print("Top 10 Pressed Keys:")
-    top_keys = sorted(input_counts["keys"].items(), key=lambda x: x[1], reverse=True)[:10]
-    for k, v in top_keys:
-        print(f"  {k}: {v}")
-    print(f"Unique Keys Used: {len(input_counts['keys'])}")
+    
 
 def generate_mouse_chart():
     labels = list(input_counts["mouse"].keys())
@@ -102,6 +116,19 @@ def generate_mouse_chart():
     plt.ylabel("Clicks")
     plt.savefig("mouse_clicks.png")
     print("Mouse click chart saved as 'mouse_clicks.png'")
+
+# -------------------------------------
+# CALLBACKS
+# -------------------------------------
+def start_listeners():
+    # Start both listeners
+    k_listener = keyboard.Listener(on_press=on_key_press)
+    m_listener = mouse.Listener(on_click=on_click)
+    k_listener.daemon = True
+    m_listener.daemon = True
+    k_listener.start()
+    m_listener.start()
+
 
 if __name__ == "__main__":
     import argparse
