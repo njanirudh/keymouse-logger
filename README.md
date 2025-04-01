@@ -37,7 +37,6 @@ _Save visualizations as .png_
 # 1. Clone the repo
 git clone https://github.com/yourusername/keymouse-logger.git
 cd keymouse-logger
-Install dependencies:
 
 # 2. Install dependencies
 pip install -r requirements.txt
