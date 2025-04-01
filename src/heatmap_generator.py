@@ -45,3 +45,15 @@ def draw_keyboard_heatmap(layout_file: str, key_counts: dict,
     plt.tight_layout()
     plt.savefig(output_file)
     plt.show()
+    
+
+
+def generate_mouse_chart():
+    labels = list(input_counts["mouse"].keys())
+    values = list(input_counts["mouse"].values())
+    plt.figure(figsize=(6,4))
+    plt.bar(labels, values)
+    plt.title("Mouse Click Distribution")
+    plt.ylabel("Clicks")
+    plt.savefig("mouse_clicks.png")
+    print("Mouse click chart saved as 'mouse_clicks.png'")

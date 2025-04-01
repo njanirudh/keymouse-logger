@@ -2,14 +2,24 @@ import os
 import json
 import argparse
 import threading
+from pathlib import Path
 from datetime import datetime
 
 import seaborn as sns
 import matplotlib.pyplot as plt
 from pynput import keyboard, mouse
 
-from heatmap_generator import draw_keyboard_heatmap
+from heatmap_generator import draw_keyboard_heatmap, generate_mouse_chart
 
+
+# -------------------------------------
+# Default layout
+# Get the path of the current script
+BASE_DIR = Path(__file__).resolve().parent
+DEFAULT_LAYOUT_PATH = BASE_DIR / '../layouts/keyboard_layout.json'
+DEFAULT_LAYOUT_PATH = DEFAULT_LAYOUT_PATH.resolve()
+
+# -------------------------------------
 # File to store key and mouse data
 DATA_FILE = "input_data.json"
 
@@ -76,38 +86,6 @@ def print_statistics():
         print(f"  {k}: {v}")
     print(f"Unique Keys Used: {len(input_counts['keys'])}")
     
-    
-def generate_keyboard_heatmap():
-    layout = [
-        ['esc','f1','f2','f3','f4','f5','f6','f7','f8','f9','f10','f11','f12','del'],
-        ['`','1','2','3','4','5','6','7','8','9','0','-','=','backspace'],
-        ['tab','q','w','e','r','t','y','u','i','o','p','[',']','\\'],
-        ['caps_lock','a','s','d','f','g','h','j','k','l',';','\'','enter'],
-        ['shift','z','x','c','v','b','n','m',',','.','/','shift'],
-        ['ctrl','alt','space','alt','ctrl']
-    ]
-    heatmap_data = []
-    for row in layout:
-        heatmap_data.append([input_counts["keys"].get(k, 0) for k in row])
-    
-    plt.figure(figsize=(15, 8))
-    sns.heatmap(heatmap_data, annot=True, fmt='d', cmap='Reds', cbar=True,
-                xticklabels=False, yticklabels=False, linewidths=.5)
-    plt.title("Keyboard Heatmap")
-    plt.tight_layout()
-    plt.savefig("keyboard_heatmap.png")
-    print("Heatmap saved as 'keyboard_heatmap.png'")
-    
-
-def generate_mouse_chart():
-    labels = list(input_counts["mouse"].keys())
-    values = list(input_counts["mouse"].values())
-    plt.figure(figsize=(6,4))
-    plt.bar(labels, values)
-    plt.title("Mouse Click Distribution")
-    plt.ylabel("Clicks")
-    plt.savefig("mouse_clicks.png")
-    print("Mouse click chart saved as 'mouse_clicks.png'")
 
 # -------------------------------------
 # MAIN START
@@ -127,7 +105,7 @@ def main():
     parser.add_argument("--stats", action="store_true", help="Show input statistics")
     parser.add_argument("--heatmap", action="store_true", help="Generate keyboard heatmap")
     parser.add_argument("--mousechart", action="store_true", help="Generate mouse click heatmap")
-    parser.add_argument("--layout_file", type=str, default="layouts/qwerty_small.json", help="Path to the layout file")
+    parser.add_argument("--layout_file", type=str, default=DEFAULT_LAYOUT_PATH, help="Path to the layout file")
     args = parser.parse_args()
 
     if args.start:
@@ -141,9 +119,9 @@ def main():
     elif args.stats:
         print_statistics()
     elif args.heatmap:
-        draw_keyboard_heatmap(layout_file=args.layout_file, key_counts={})
+        draw_keyboard_heatmap(layout_file=args.layout_file, key_counts=input_counts["keys"])
     elif args.mousechart:
-        generate_mouse_chart()
+        generate_mouse_chart(key_counts=input_counts["mouse"])
     else:
         parser.print_help()
 
