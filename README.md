@@ -32,19 +32,20 @@ _Save visualizations as .png_
 
 -------
 ## 📦 Installation
-Clone the repo:
 
-bash
-Copy
-Edit
+```
+# 1. Clone the repo
 git clone https://github.com/yourusername/keymouse-logger.git
 cd keymouse-logger
 Install dependencies:
 
-bash
-Copy
-Edit
+# 2. Install dependencies
 pip install -r requirements.txt
+
+# 3. Run the logger (background)
+echo "▶️ Starting key and mouse logger..."
+python3 src/key_mouse_logger.py --start
+```
 
 -------
 ## 📂 Project Structure
