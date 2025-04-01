@@ -60,15 +60,16 @@ pip install -r requirements.txt
 #### ▶️ Start Logging
 Run in the background:
 
-bash
-Copy
-Edit
+```
 python3 key_mouse_logger.py --start
+```
 
 -------
 #### 📊 Show Stats
-
+Generate and Print stats from the logged data.
+```
 python3 key_mouse_logger.py --stats
+```
 
 ```
 --- Input Usage Statistics ---
@@ -96,21 +97,15 @@ Unique Keys Used: 35
 #### 🔥 Generate Heatmaps
 Static Keyboard Heatmap (PNG):
 
-bash
-Copy
-Edit
+```
 python3 key_mouse_logger.py --heatmap
+```
+
 Mouse Click Bar Chart:
 
-bash
-Copy
-Edit
 python3 key_mouse_logger.py --mousechart
 Interactive Keyboard Heatmap (HTML):
 
-python
-Copy
-Edit
 from keyboard_viz import draw_interactive_keyboard_heatmap
 
 draw_interactive_keyboard_heatmap("keyboard_layout.json", your_key_counts_dict)
