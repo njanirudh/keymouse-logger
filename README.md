@@ -3,6 +3,11 @@
 Key & Mouse Activity Logger with Heatmaps is a lightweight, background-running tool that tracks your keyboard and mouse usage on Linux. It helps you understand your typing patterns, mouse habits, and hotkey frequency through rich visualizations like keyboard heatmaps and click charts. Whether you're a developer, gamer, writer, or just curious about your input behavior, this app turns your daily interactions into actionable insights and beautiful data-driven visuals.
 
 -------
+## 🌈 Visualization Example
+
+![Keyboard Heatmap](data/example_heatmap.png)
+
+-------
 ## 🚀 Features
 ✅ Background Keylogger    
 _Logs every keypress in the background without interfering with your work._
@@ -96,24 +101,14 @@ Unique Keys Used: 35
 -------
 #### 🔥 Generate Heatmaps
 Static Keyboard Heatmap (PNG):
-
 ```
 python3 key_mouse_logger.py --heatmap
 ```
 
 Mouse Click Bar Chart:
-
+```
 python3 key_mouse_logger.py --mousechart
-Interactive Keyboard Heatmap (HTML):
-
-from keyboard_viz import draw_interactive_keyboard_heatmap
-
-draw_interactive_keyboard_heatmap("keyboard_layout.json", your_key_counts_dict)
-
--------
-## 🌈 Visualization Example
-
-![Keyboard Heatmap](data/example_heatmap.png)
+```
 
 -------
 ## 🔮 Possibilities
