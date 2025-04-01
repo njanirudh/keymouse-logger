@@ -1,5 +1,6 @@
 import os
 import json
+import argparse
 import threading
 from datetime import datetime
 
@@ -120,9 +121,7 @@ def start_listeners():
     k_listener.start()
     m_listener.start()
 
-
-if __name__ == "__main__":
-    import argparse
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--start", action="store_true", help="Start the key and mouse logger")
     parser.add_argument("--stats", action="store_true", help="Show input statistics")
@@ -148,3 +147,6 @@ if __name__ == "__main__":
     else:
         parser.print_help()
 
+
+if __name__ == "__main__":
+    main()
