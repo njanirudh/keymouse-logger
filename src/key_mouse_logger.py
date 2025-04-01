@@ -3,9 +3,11 @@ import json
 import threading
 from datetime import datetime
 
-from pynput import keyboard, mouse
-import matplotlib.pyplot as plt
 import seaborn as sns
+import matplotlib.pyplot as plt
+from pynput import keyboard, mouse
+
+from heatmap_generator import draw_keyboard_heatmap
 
 # File to store key and mouse data
 DATA_FILE = "input_data.json"
@@ -140,7 +142,7 @@ if __name__ == "__main__":
     elif args.stats:
         print_statistics()
     elif args.heatmap:
-        generate_keyboard_heatmap()
+        draw_keyboard_heatmap(layout_file=args.layout_file, key_counts={})
     elif args.mousechart:
         generate_mouse_chart()
     else:
