@@ -1,6 +1,6 @@
 # ⌨️🖱️ Key & Mouse Activity Logger with Heatmaps​
 
-
+Key & Mouse Activity Logger with Heatmaps is a lightweight, background-running tool that tracks your keyboard and mouse usage on Linux. It helps you understand your typing patterns, mouse habits, and hotkey frequency through rich visualizations like keyboard heatmaps and click charts. Whether you're a developer, gamer, writer, or just curious about your input behavior, this app turns your daily interactions into actionable insights and beautiful data-driven visuals.
 
 -------
 ## 🚀 Features
@@ -23,7 +23,7 @@ _Get total counts, top keys, and mouse click breakdowns._
 _Fully configurable via keyboard_layout.json for any keyboard layout (QWERTY, AZERTY, Dvorak…)._
 
 ✅ Export & Save    
-_Save visualizations as .png or .html (for interactive plots)._
+_Save visualizations as .png_
 
 -------
 ## 📦 Installation
