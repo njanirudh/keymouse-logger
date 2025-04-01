@@ -1,27 +1,29 @@
 # ⌨️🖱️ Key & Mouse Activity Logger with Heatmaps​
 
+Key & Mouse Activity Logger with Heatmaps is a lightweight, background-running tool that tracks your keyboard and mouse usage on Linux. It helps you understand your typing patterns, mouse habits, and hotkey frequency through rich visualizations like keyboard heatmaps and click charts. Whether you're a developer, gamer, writer, or just curious about your input behavior, this app turns your daily interactions into actionable insights and beautiful data-driven visuals.
+
 -------
 ## 🚀 Features
 ✅ Background Keylogger    
-Logs every keypress in the background without interfering with your work.
+_Logs every keypress in the background without interfering with your work._
 
 ✅ Mouse Click Tracking    
-Counts left, right, and middle mouse button clicks.
+_Counts left, right, and middle mouse button clicks._
 
 ✅ Interactive Keyboard Heatmap    
-Visualize key usage with a dynamic heatmap from white 🔲 (least used) to red 🔴 (most used).
+_Visualize key usage with a dynamic heatmap from white 🔲 (least used) to red 🔴 (most used)._
 
 ✅ Custom Zones    
-Group keys into functional areas: Function keys, Letters, Numbers, Modifiers, etc.
+_Group keys into functional areas: Function keys, Letters, Numbers, Modifiers, etc._
 
 ✅ Usage Stats    
-Get total counts, top keys, and mouse click breakdowns.
+_Get total counts, top keys, and mouse click breakdowns._
 
 ✅ Modular & Configurable    
-Fully configurable via keyboard_layout.json for any keyboard layout (QWERTY, AZERTY, Dvorak…).
+_Fully configurable via keyboard_layout.json for any keyboard layout (QWERTY, AZERTY, Dvorak…)._
 
 ✅ Export & Save    
-Save visualizations as .png or .html (for interactive plots).
+_Save visualizations as .png_
 
 -------
 ## 📦 Installation
@@ -53,7 +55,7 @@ Edit
 
 -------
 ## 🛠️ Usage
-▶️ Start Logging
+#### ▶️ Start Logging
 Run in the background:
 
 bash
@@ -62,14 +64,14 @@ Edit
 python3 key_mouse_logger.py --start
 
 -------
-## 📊 Show Stats
+#### 📊 Show Stats
 bash
 Copy
 Edit
 python3 key_mouse_logger.py --stats
 
 -------
-## 🔥 Generate Heatmaps
+#### 🔥 Generate Heatmaps
 Static Keyboard Heatmap (PNG):
 
 bash
@@ -90,7 +92,11 @@ Edit
 from keyboard_viz import draw_interactive_keyboard_heatmap
 
 draw_interactive_keyboard_heatmap("keyboard_layout.json", your_key_counts_dict)
-🌈 Visualization Example
+
+-------
+## 🌈 Visualization Example
+
+![Keyboard Heatmap](data/example_heatmap.png)
 
 -------
 ## 🔮 Possibilities
@@ -103,9 +109,9 @@ draw_interactive_keyboard_heatmap("keyboard_layout.json", your_key_counts_dict)
 -------
 ## 🧩 Customize Your Layout
 * Edit keyboard_layout.json:
-* Rearrange keys
-* Resize wide keys (space, shift, enter)
-* Group keys into custom zones (e.g., Navigation, Coding, Gaming, Media)
+  * Rearrange keys
+  * Resize wide keys (space, shift, enter)
+  * Group keys into custom zones (e.g., Navigation, Coding, Gaming, Media)
 
 -------
 ## 📌 Notes
