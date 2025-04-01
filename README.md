@@ -43,52 +43,69 @@ pip install -r requirements.txt
 
 -------
 ## 📂 Project Structure
-bash
-Copy
-Edit
-📁 keymouse-logger/
-├── key_mouse_logger.py       # Main logger and visualizer
-├── keyboard_layout.json      # Keyboard layout, widths, and zones
-├── keyboard_heatmap.png      # Sample heatmap output
-├── requirements.txt
-└── README.md
+
+📁 keymouse-logger/   
+├── data       
+     ├── keyboard_heatmap.png      # Sample heatmap output                       
+├── layouts                            
+     ├── keyboard_layout.json      # Keyboard layout, widths, and zones                                  
+├── src                     
+     ├── key_mouse_logger.py       # Main logger and visualizer                 
+├── test                                 
+├── requirements.txt                                                
+└── README.md                                         
 
 -------
 ## 🛠️ Usage
 #### ▶️ Start Logging
 Run in the background:
 
-bash
-Copy
-Edit
+```
 python3 key_mouse_logger.py --start
+```
 
 -------
 #### 📊 Show Stats
-bash
-Copy
-Edit
+Generate and Print stats from the logged data.
+```
 python3 key_mouse_logger.py --stats
+```
+
+```
+--- Input Usage Statistics ---
+Total Key Presses: 204
+Total Mouse Clicks: 63
+Mouse Click Breakdown:
+  Left Clicks: 59
+  Right Clicks: 4
+  Middle Clicks: 0
+Top 10 Pressed Keys:
+  backspace: 21
+  ctrl: 17
+  t: 15
+  space: 15
+  e: 14
+  enter: 10
+  a: 9
+  v: 8
+  o: 8
+  s: 8
+Unique Keys Used: 35
+```
 
 -------
 #### 🔥 Generate Heatmaps
 Static Keyboard Heatmap (PNG):
 
-bash
-Copy
-Edit
+```
 python3 key_mouse_logger.py --heatmap
+```
+
 Mouse Click Bar Chart:
 
-bash
-Copy
-Edit
 python3 key_mouse_logger.py --mousechart
 Interactive Keyboard Heatmap (HTML):
 
-python
-Copy
-Edit
 from keyboard_viz import draw_interactive_keyboard_heatmap
 
 draw_interactive_keyboard_heatmap("keyboard_layout.json", your_key_counts_dict)
