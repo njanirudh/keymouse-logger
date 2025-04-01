@@ -107,7 +107,7 @@ def generate_mouse_chart():
     print("Mouse click chart saved as 'mouse_clicks.png'")
 
 # -------------------------------------
-# CALLBACKS
+# MAIN START
 # -------------------------------------
 def start_listeners():
     # Start both listeners
@@ -125,7 +125,8 @@ if __name__ == "__main__":
     parser.add_argument("--start", action="store_true", help="Start the key and mouse logger")
     parser.add_argument("--stats", action="store_true", help="Show input statistics")
     parser.add_argument("--heatmap", action="store_true", help="Generate keyboard heatmap")
-    parser.add_argument("--mousechart", action="store_true", help="Generate mouse click chart")
+    parser.add_argument("--mousechart", action="store_true", help="Generate mouse click heatmap")
+    parser.add_argument("--layout_file", type=str, default="layouts/qwerty_small.json", help="Path to the layout file")
     args = parser.parse_args()
 
     if args.start:

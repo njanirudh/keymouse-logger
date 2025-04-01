@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.patches import Rectangle
 
-def draw_keyboard_heatmap(layout_file: str, key_counts: dict, output_file: str = "keyboard_heatmap.png"):
+def draw_keyboard_heatmap(layout_file: str, key_counts: dict, 
+                          output_file: str = "keyboard_heatmap.png"):
     """
     Generates a heatmap of a keyboard based on key press frequency.
     Args:
